@@ -1,0 +1,177 @@
+---
+const navLinks = [
+  { href: '/#games', label: 'Games' },
+  { href: '/#about', label: 'About' },
+  { href: '/news', label: 'News' },
+  { href: '/#contact', label: 'Contact' },
+];
+---
+
+<nav class="nav">
+  <div class="container">
+    <div class="nav-content">
+      <a href="/" class="logo">
+        <img src="/favicon.png" alt="GydroGames" class="logo-icon" width="40" height="40" />
+        <span>GydroGames</span>
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks" role="list">
+        {navLinks.map(link => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const hamburger = document.getElementById('hamburger')!;
+  const navLinks = document.getElementById('navLinks')!;
+
+  hamburger.addEventListener('click', () => {
+    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', String(!expanded));
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
+</script>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) 0;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.4rem;
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .logo span {
+    background: linear-gradient(135deg, var(--color-accent-bright), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 0.5rem;
+    object-fit: contain;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: var(--space-md);
+  }
+
+  .nav-links a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .nav-links a:hover {
+    color: var(--color-accent-bright);
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 2px;
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+
+    .nav-links {
+      position: fixed;
+      top: 70px;
+      right: -100%;
+      width: min(280px, 80vw);
+      height: calc(100vh - 70px);
+      background: var(--color-surface);
+      flex-direction: column;
+      gap: 0;
+      padding: var(--space-md);
+      border-left: 1px solid var(--color-border);
+      transition: right var(--duration-normal) var(--ease-out);
+      box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+    }
+
+    .nav-links.active {
+      right: 0;
+    }
+
+    .nav-links li {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav-links a {
+      display: block;
+      padding: var(--space-sm);
+      font-size: 1.1rem;
+    }
+  }
+</style>

@@ -1,0 +1,552 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+import pickleImg from '../assets/pickle-empire-card.png';
+import creativeImg from '../assets/creative-collection-card.png';
+import spaceImg from '../assets/space-project-card.png';
+
+const games = [
+  {
+    title: 'Pickle Empire',
+    description:
+      'Grow pickles, sell pickles, and build your empire! Our AI-informed idle clicker learns from how players actually progress — tuning difficulty, pacing, and rewards to keep the fun flowing. Tap your way to pickle domination.',
+    status: 'active',
+    statusLabel: 'Join Testing →',
+    statusHref: '/testing',
+    image: pickleImg,
+    imageAlt: 'Pickle Empire — idle clicker game card',
+    featured: true,
+  },
+  {
+    title: 'Creative Collection',
+    description:
+      'A curated set of distinct experiences spanning puzzle-solving adventures, strategic tycoon gameplay, and narrative-driven stories. Each game is shaped by player data and designed to offer something genuinely fresh.',
+    status: 'inactive',
+    statusLabel: 'In Development',
+    image: creativeImg,
+    imageAlt: 'Creative Collection — upcoming games card',
+    featured: false,
+  },
+  {
+    title: 'Untitled Space Project',
+    description:
+      'An ambitious multiplayer sci-fi experience set among the stars. Explore vast environments, team up with other players, and forge your path in an expansive universe. Our most daring project yet.',
+    status: 'inactive',
+    statusLabel: 'Early Development',
+    image: spaceImg,
+    imageAlt: 'Untitled Space Project — sci-fi multiplayer game card',
+    featured: false,
+  },
+];
+---
+
+<Layout
+  title="GydroGames | Android Mobile Game Studio"
+  description="GydroGames — An AI-powered Android game studio building games informed by how players actually play. Join our beta testing program to get early access."
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "GydroGames",
+    "url": "https://gydrogames.com",
+    "logo": "https://gydrogames.com/favicon.png",
+    "description": "AI-powered Android mobile game studio building games informed by how players actually play",
+    "email": "admin@gydrogames.com",
+    "sameAs": ["https://discord.gg/g7CPwwad"],
+    "founder": {
+      "@type": "Person",
+      "name": "Thomas Wright"
+    },
+    "makesOffer": [
+      {
+        "@type": "VideoGame",
+        "name": "Pickle Empire",
+        "description": "An AI-informed idle clicker where you grow pickles, sell pickles, and build your empire.",
+        "gamePlatform": "Android",
+        "genre": "Idle Clicker",
+        "applicationCategory": "Game",
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero">
+    <canvas id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="container hero-content">
+      <h1 class="hero-title">
+        Creating Mobile Games<br />
+        <span class="gradient-text">That Matter</span>
+      </h1>
+      <p class="hero-subtitle">
+        An AI-powered Android game studio building games informed by how players actually play.
+        <a href="/testing" class="inline-link">Join our beta testing program</a> to get early access.
+      </p>
+      <div class="hero-cta">
+        <a href="#games" class="btn btn-primary">Explore Our Games</a>
+        <a href="#about" class="btn btn-secondary">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== GAMES ==================== -->
+  <section id="games" class="games">
+    <div class="container">
+      <h2 class="section-title">Our Games</h2>
+      <div class="games-grid">
+        {games.map(game => (
+          <article class={`game-card${game.featured ? ' featured' : ''}`}>
+            <div class="game-image">
+              <Image
+                src={game.image}
+                alt={game.imageAlt}
+                width={600}
+                height={338}
+                format="webp"
+                loading={game.featured ? 'eager' : 'lazy'}
+              />
+            </div>
+            <div class="game-content">
+              <h3>{game.title}</h3>
+              <p>{game.description}</p>
+              {game.statusHref ? (
+                <a href={game.statusHref} class={`status-badge status-badge--${game.status}`}>
+                  {game.statusLabel}
+                </a>
+              ) : (
+                <span class={`status-badge status-badge--${game.status}`}>
+                  {game.statusLabel}
+                </span>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT ==================== -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-content">
+        <h2 class="section-title">About GydroGames</h2>
+        <p>
+          GydroGames is an AI-powered Android game studio founded by Thomas Wright. We build games
+          that are informed by how players actually play — using real behavioral data to tune
+          difficulty, pacing, and rewards so every session feels right. <a href="/testing" class="inline-link">Join beta
+          testing</a> to experience our games firsthand.
+        </p>
+        <p>
+          That player-first philosophy shapes everything we ship. Our approach: study what resonates,
+          apply it intelligently, and craft experiences that reflect those principles at every layer.
+          Whether it's the satisfying tick of an idle clicker or the boundless scope of a multiplayer
+          universe, we design with intention.
+        </p>
+        <p>
+          Specializing in Android mobile games, we focus on accessible yet meaningful experiences
+          that respect players' time while delivering genuine enjoyment. No genre limits — just
+          good games informed by good data.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-number gradient-text">AI</div>
+            <div class="stat-label">Powered Studio</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number gradient-text">∞</div>
+            <div class="stat-label">Ambition</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number gradient-text">100%</div>
+            <div class="stat-label">Player-Focused</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT ==================== -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="contact-text">
+        Questions about our games? Interested in collaboration or feedback? Want to
+        <a href="/testing" class="inline-link">join beta testing</a>? Drop a message — we'd love to hear from you.
+      </p>
+      <div class="contact-buttons">
+        <a href="mailto:admin@gydrogames.com" class="btn btn-primary">Contact Us</a>
+        <a
+          href="https://discord.gg/g7CPwwad"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-discord"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+          </svg>
+          Join Our Discord
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<!-- ==================== HERO CANVAS (Perlin noise particle flow field) ==================== -->
+<script>
+  // Direction A: Perlin noise particle flow field
+  // Falls back gracefully on low-end devices (reduces particle count)
+
+  const canvas = document.getElementById('heroCanvas') as HTMLCanvasElement;
+  if (!canvas) throw new Error('Canvas not found');
+  const ctx = canvas.getContext('2d')!;
+
+  // ---- Perlin noise (simplex-like, single-octave) ----
+  function fade(t: number) { return t * t * t * (t * (t * 6 - 15) + 10); }
+  function lerp(a: number, b: number, t: number) { return a + t * (b - a); }
+  function grad(hash: number, x: number, y: number) {
+    const h = hash & 3;
+    const u = h < 2 ? x : y;
+    const v = h < 2 ? y : x;
+    return ((h & 1) ? -u : u) + ((h & 2) ? -v : v);
+  }
+
+  const perm = new Uint8Array(512);
+  const p = new Uint8Array(256);
+  for (let i = 0; i < 256; i++) p[i] = i;
+  for (let i = 255; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [p[i], p[j]] = [p[j], p[i]];
+  }
+  for (let i = 0; i < 512; i++) perm[i] = p[i & 255];
+
+  function noise2d(x: number, y: number) {
+    const X = Math.floor(x) & 255;
+    const Y = Math.floor(y) & 255;
+    const xf = x - Math.floor(x);
+    const yf = y - Math.floor(y);
+    const u = fade(xf);
+    const v = fade(yf);
+    const aa = perm[perm[X] + Y];
+    const ab = perm[perm[X] + Y + 1];
+    const ba = perm[perm[X + 1] + Y];
+    const bb = perm[perm[X + 1] + Y + 1];
+    return lerp(
+      lerp(grad(aa, xf, yf), grad(ba, xf - 1, yf), u),
+      lerp(grad(ab, xf, yf - 1), grad(bb, xf - 1, yf - 1), u),
+      v
+    );
+  }
+
+  // ---- Particle system ----
+  // Reduce count on mobile / low-performance hint
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = window.innerWidth < 768;
+  const PARTICLE_COUNT = prefersReducedMotion ? 0 : isMobile ? 300 : 700;
+  const FIELD_SCALE = 0.003;
+  const SPEED = 1.2;
+  const TRAIL_ALPHA = 0.04;
+
+  let W = 0, H = 0;
+
+  interface Particle {
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    life: number;
+    maxLife: number;
+    size: number;
+  }
+
+  const particles: Particle[] = [];
+
+  function spawn(): Particle {
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: 0,
+      vy: 0,
+      life: 0,
+      maxLife: 120 + Math.random() * 180,
+      size: 0.8 + Math.random() * 1.2,
+    };
+  }
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function init() {
+    resize();
+    particles.length = 0;
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      const p = spawn();
+      p.life = Math.random() * p.maxLife;
+      particles.push(p);
+    }
+  }
+
+  let t = 0;
+  let raf: number;
+
+  function draw() {
+    // Fade trail
+    ctx.fillStyle = `rgba(10,10,15,${TRAIL_ALPHA})`;
+    ctx.fillRect(0, 0, W, H);
+
+    t += 0.003;
+
+    for (const p of particles) {
+      const angle = noise2d(p.x * FIELD_SCALE + t, p.y * FIELD_SCALE) * Math.PI * 4;
+      p.vx = p.vx * 0.9 + Math.cos(angle) * SPEED * 0.1;
+      p.vy = p.vy * 0.9 + Math.sin(angle) * SPEED * 0.1;
+      p.x += p.vx;
+      p.y += p.vy;
+      p.life++;
+
+      const progress = p.life / p.maxLife;
+      const alpha = progress < 0.1
+        ? progress / 0.1
+        : progress > 0.85
+          ? (1 - progress) / 0.15
+          : 1;
+
+      // Purple-to-lavender gradient based on flow angle
+      const hue = 260 + (noise2d(p.x * FIELD_SCALE * 2, p.y * FIELD_SCALE * 2) * 30);
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `hsla(${hue},70%,65%,${alpha * 0.6})`;
+      ctx.fill();
+
+      // Respawn out-of-bounds or expired particles
+      if (p.life >= p.maxLife || p.x < -5 || p.x > W + 5 || p.y < -5 || p.y > H + 5) {
+        Object.assign(p, spawn());
+      }
+    }
+
+    raf = requestAnimationFrame(draw);
+  }
+
+  if (PARTICLE_COUNT > 0) {
+    init();
+    draw();
+    window.addEventListener('resize', () => { resize(); });
+  } else {
+    // Direction B fallback: just leave the CSS gradient mesh from CSS
+    canvas.style.display = 'none';
+  }
+
+  // Clean up on page navigation (Astro view transitions)
+  document.addEventListener('astro:before-swap', () => cancelAnimationFrame(raf));
+</script>
+
+<style>
+  /* ==================== HERO ==================== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  #heroCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    /* Direction B fallback: CSS gradient mesh */
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(139,92,246,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(139,92,246,0.07) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: var(--space-xl) 0;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-lg);
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ==================== GAMES ==================== */
+  .games {
+    padding: var(--space-xl) 0;
+    background: var(--color-surface);
+  }
+
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .game-card {
+    background: var(--color-surface);
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    border: var(--card-border);
+    transition: transform var(--duration-normal) var(--ease-out),
+                box-shadow var(--duration-normal) var(--ease-out),
+                border-color var(--duration-normal) var(--ease-out);
+  }
+
+  .game-card:hover {
+    transform: scale(1.02);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--card-border-hover);
+  }
+
+  .game-card.featured {
+    border-color: rgba(139,92,246,0.4);
+    background: rgba(139,92,246,0.04);
+  }
+
+  .game-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(124,58,237,0.2));
+  }
+
+  .game-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .game-content {
+    padding: var(--space-md);
+  }
+
+  .game-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .game-content p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-sm);
+    line-height: 1.65;
+  }
+
+  /* ==================== ABOUT ==================== */
+  .about {
+    padding: var(--space-xl) 0;
+  }
+
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .about-content p {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+    line-height: 1.8;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .stat {
+    text-align: center;
+    padding: var(--space-md);
+    background: var(--color-surface);
+    border-radius: 0.5rem;
+    border: var(--card-border);
+  }
+
+  .stat-number {
+    font-size: 2.25rem;
+    font-weight: 900;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  /* ==================== CONTACT ==================== */
+  .contact {
+    padding: var(--space-xl) 0;
+    background: var(--color-surface);
+    text-align: center;
+  }
+
+  .contact-text {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  .contact-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .hero-cta,
+    .contact-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
