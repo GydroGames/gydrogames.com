@@ -1,0 +1,466 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Internal Testing | GydroGames"
+  description="Join GydroGames beta testing program for Pickle Empire. Sign in with Google to get early access to our Android mobile games and help shape development."
+  canonicalUrl="https://gydrogames.com/testing"
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Internal Testing Program",
+    "description": "Join the GydroGames beta testing program for early access to Pickle Empire and upcoming Android games",
+    "url": "https://gydrogames.com/testing",
+    "publisher": {
+      "@type": "Organization",
+      "name": "GydroGames",
+      "url": "https://gydrogames.com",
+      "logo": "https://gydrogames.com/favicon.png"
+    },
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "Pickle Empire",
+      "applicationCategory": "Game",
+      "operatingSystem": "Android",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/PreOrder"
+      }
+    }
+  }
+  </script>
+
+  <!-- Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer is:inline></script>
+
+  <!-- Hero -->
+  <section class="hero-small">
+    <div class="container hero-content">
+      <h1 class="hero-title">
+        <span class="gradient-text">Internal Testing</span>
+      </h1>
+      <p class="hero-subtitle">
+        Get early access to <a href="/#games" class="inline-link">our games</a> and help shape the
+        future of <a href="/" class="inline-link">GydroGames</a>.
+      </p>
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+  </section>
+
+  <!-- Request Access -->
+  <section class="request-access">
+    <div class="container">
+      <h2 class="section-title">Request Beta Access</h2>
+      <div class="access-card">
+        <div class="access-content">
+          <h3>Ready to Join the Testing Program?</h3>
+          <p>
+            Sign in with your Google account to request access. We'll verify your Gmail address
+            and add you to the internal testing list.
+          </p>
+          <button id="googleSignInBtn" class="btn btn-google" type="button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Sign in with Google
+          </button>
+          <div id="statusMessage" class="status-message" role="status" aria-live="polite"></div>
+          <p class="access-note">
+            By signing in, you'll be securely authenticated with Google and your email will be
+            sent to us for approval.
+          </p>
+        </div>
+
+        <div class="access-steps">
+          <h4>What happens next:</h4>
+          <ol>
+            <li>Sign in with your Google account</li>
+            <li>We'll receive your Gmail address</li>
+            <li>You'll be added to the testing list</li>
+            <li>You'll receive Discord tester role access</li>
+            <li>Download the game via the button below</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Games Testing -->
+  <section class="games-testing">
+    <div class="container">
+      <h2 class="section-title">Available for Testing</h2>
+      <div class="testing-grid">
+        <!-- Pickle Empire -->
+        <article class="testing-card">
+          <div class="testing-header">
+            <div class="game-icon" aria-hidden="true">🥒</div>
+            <div>
+              <h3>Pickle Empire</h3>
+              <span class="version-badge">Beta v1.3.0</span>
+            </div>
+          </div>
+          <p class="testing-description">
+            Help us test the core idle clicker mechanics, progression systems, and pickle empire
+            building features. Learn more <a href="/#games" class="inline-link">about Pickle Empire</a>.
+          </p>
+          <div class="testing-status">
+            <span class="status-indicator active" aria-hidden="true"></span>
+            <span>Currently accepting testers</span>
+          </div>
+          <a
+            href="https://play.google.com/apps/internaltest/4701268377317242761"
+            class="btn btn-testing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+            </svg>
+            Download Beta Release
+          </a>
+          <p class="feedback-note">
+            <strong>Feedback:</strong> Request access on{' '}
+            <a href="https://discord.gg/g7CPwwad" target="_blank" rel="noopener" class="inline-link">Discord</a>{' '}
+            or via <a href="mailto:admin@gydrogames.com" class="inline-link">email</a>.
+          </p>
+        </article>
+
+        <!-- Coming soon -->
+        <article class="testing-card coming-soon">
+          <div class="testing-header">
+            <div class="game-icon" aria-hidden="true">🎮</div>
+            <div>
+              <h3>More Games Coming Soon</h3>
+              <span class="version-badge">TBA</span>
+            </div>
+          </div>
+          <p class="testing-description">
+            Additional games from our{' '}
+            <a href="/#games" class="inline-link">Creative Collection and Untitled Space Project</a>{' '}
+            will be available for testing soon.{' '}
+            <a href="/#about" class="inline-link">Learn more about GydroGames</a>.
+          </p>
+          <div class="testing-status">
+            <span class="status-indicator" aria-hidden="true"></span>
+            <span>Not yet available</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Need Help?</h2>
+      <p class="contact-text">
+        Questions about testing? Issues with the game? Want to learn more
+        <a href="/#about" class="inline-link">about our studio</a>? Reach out and we'll help you get started.
+      </p>
+      <div class="contact-buttons">
+        <a href="mailto:admin@gydrogames.com" class="btn btn-primary">Email Us</a>
+        <a
+          href="https://discord.gg/g7CPwwad"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-discord"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+          </svg>
+          Join Discord
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const CLIENT_ID = '909480614586-g6avkb4qut7lui0l1msi6mh0ukp9l5sp.apps.googleusercontent.com';
+  const WEBHOOK_URL = 'https://n.gydrogames.com/webhook/signup';
+
+  function handleCredentialResponse(response: { credential: string }) {
+    const payload = JSON.parse(atob(response.credential.split('.')[1]));
+    const userEmail = payload.email;
+    const statusMsg = document.getElementById('statusMessage')!;
+    statusMsg.textContent = 'Processing your request...';
+    statusMsg.className = 'status-message loading';
+    window.location.href = `${WEBHOOK_URL}?email=${encodeURIComponent(userEmail)}`;
+  }
+
+  window.addEventListener('load', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get('status');
+    const statusMsg = document.getElementById('statusMessage')!;
+
+    if (status === 'success') {
+      statusMsg.textContent = '✓ Success! Your request has been submitted. We\'ll review and add you to the testing list shortly.';
+      statusMsg.className = 'status-message success';
+    } else if (status === 'error') {
+      statusMsg.textContent = '✗ Something went wrong. Please try again or contact us directly.';
+      statusMsg.className = 'status-message error';
+    }
+
+    const g = (window as any).google;
+    if (g) {
+      g.accounts.id.initialize({ client_id: CLIENT_ID, callback: handleCredentialResponse });
+      document.getElementById('googleSignInBtn')!.addEventListener('click', () => {
+        g.accounts.id.prompt();
+      });
+    }
+  });
+</script>
+
+<style>
+  .hero-small {
+    position: relative;
+    padding: calc(var(--space-xl) + 70px) 0 var(--space-xl);
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(139,92,246,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 7vw, 4rem);
+    font-weight: 900;
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--color-text-secondary);
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Request Access */
+  .request-access {
+    padding: var(--space-xl) 0;
+    background: var(--color-surface);
+  }
+
+  .access-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    background: rgba(139,92,246,0.04);
+    border: 1px solid rgba(139,92,246,0.2);
+    border-radius: var(--card-radius);
+    padding: var(--space-lg);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .access-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .access-content p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+    line-height: 1.65;
+  }
+
+  .btn-google {
+    background: #fff;
+    color: #3c4043;
+    border-color: #dadce0;
+    font-weight: 500;
+    margin-bottom: var(--space-sm);
+  }
+  .btn-google:hover {
+    background: #f8f9fa;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .status-message {
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+    min-height: 1.5rem;
+  }
+  .status-message.success { color: #4ade80; }
+  .status-message.error   { color: #f87171; }
+  .status-message.loading { color: var(--color-text-secondary); }
+
+  .access-note {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    margin-top: var(--space-sm) !important;
+  }
+
+  .access-steps h4 {
+    font-size: 1rem;
+    margin-bottom: var(--space-sm);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .access-steps ol {
+    padding-left: 1.25rem;
+    color: var(--color-text-secondary);
+    line-height: 2;
+  }
+
+  /* Games Testing */
+  .games-testing {
+    padding: var(--space-xl) 0;
+  }
+
+  .testing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .testing-card {
+    background: var(--color-surface);
+    border: var(--card-border);
+    border-radius: var(--card-radius);
+    padding: var(--space-md);
+    transition: border-color var(--duration-normal) var(--ease-out);
+  }
+
+  .testing-card:not(.coming-soon):hover {
+    border-color: var(--card-border-hover);
+  }
+
+  .coming-soon {
+    opacity: 0.7;
+  }
+
+  .testing-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .game-icon {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .testing-header h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .version-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    background: rgba(139,92,246,0.15);
+    color: var(--color-accent-bright);
+    border-radius: 4px;
+  }
+
+  .testing-description {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-sm);
+  }
+
+  .testing-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: var(--space-sm);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-border);
+    flex-shrink: 0;
+  }
+
+  .status-indicator.active {
+    background: #4ade80;
+    box-shadow: 0 0 6px #4ade8080;
+    animation: pulse-green 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-green {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  .btn-testing {
+    background: var(--color-accent);
+    color: #fff;
+    margin-bottom: var(--space-sm);
+  }
+  .btn-testing:hover {
+    background: var(--color-accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px #8b5cf640;
+  }
+
+  .feedback-note {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* Contact */
+  .contact {
+    padding: var(--space-xl) 0;
+    background: var(--color-surface);
+    text-align: center;
+  }
+
+  .contact-text {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  .contact-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .access-card {
+      grid-template-columns: 1fr;
+    }
+    .contact-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
